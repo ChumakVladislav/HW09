@@ -28,7 +28,7 @@ const options = {
       return;
     }
     ref.startBtn.disabled = false;
-    options.lastTime = selectedDates[0];
+    options.defaultDate = selectedDates[0];
   },
 };
 
@@ -57,10 +57,10 @@ ref.startBtn.addEventListener('click', timerStart);
 
 function timerStart() {
   const id = setInterval(() => {
-    if (options.lastTime - Date.now() < 1000) {
+    if (options.defaultDate - Date.now() < 1000) {
       clearInterval(id);
     }
-    const timeLess = options.lastTime - Date.now();
+    const timeLess = options.defaultDate - Date.now();
     const timerData = convertMs(timeLess);
 
     ref.days.textContent = timerData.days.toString().padStart(2, '0');
